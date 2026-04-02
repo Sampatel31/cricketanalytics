@@ -1,0 +1,20 @@
+# SPI weight profiles per cricket format
+# Each format's weights must sum to 1.0
+
+[weights.T20I]
+batting  = 0.40
+bowling  = 0.35
+fielding = 0.10
+impact   = 0.15
+
+[weights.ODI]
+batting  = 0.38
+bowling  = 0.35
+fielding = 0.12
+impact   = 0.15
+
+[weights.TEST]
+batting  = 0.40
+bowling  = 0.40
+fielding = 0.10
+impact   = 0.10
