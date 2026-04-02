@@ -45,21 +45,39 @@ class FormatType(str, Enum):
 
 
 class SPIWeights:
-    """SPI weight profile for a single cricket format."""
+    """SPI weight profile for a single cricket format.
+
+    Weights correspond to the five SPI components:
+    - ``run_pressure`` (RP)
+    - ``wicket_criticality`` (WC)
+    - ``match_phase`` (MP)
+    - ``tournament_stage`` (TS)
+    - ``opposition_quality`` (OQ)
+
+    All five weights must sum to 1.0.
+    """
 
     def __init__(
         self,
-        batting: float,
-        bowling: float,
-        fielding: float,
-        impact: float,
+        run_pressure: float,
+        wicket_criticality: float,
+        match_phase: float,
+        tournament_stage: float,
+        opposition_quality: float,
     ) -> None:
         """Initialise weight profile."""
-        self.batting = batting
-        self.bowling = bowling
-        self.fielding = fielding
-        self.impact = impact
-        total = batting + bowling + fielding + impact
+        self.run_pressure = run_pressure
+        self.wicket_criticality = wicket_criticality
+        self.match_phase = match_phase
+        self.tournament_stage = tournament_stage
+        self.opposition_quality = opposition_quality
+        total = (
+            run_pressure
+            + wicket_criticality
+            + match_phase
+            + tournament_stage
+            + opposition_quality
+        )
         if abs(total - 1.0) > 1e-6:
             raise ValueError(
                 f"SPI weights must sum to 1.0, got {total:.6f}"
@@ -68,32 +86,36 @@ class SPIWeights:
     def as_dict(self) -> dict[str, float]:
         """Return weights as a plain dictionary."""
         return {
-            "batting": self.batting,
-            "bowling": self.bowling,
-            "fielding": self.fielding,
-            "impact": self.impact,
+            "run_pressure": self.run_pressure,
+            "wicket_criticality": self.wicket_criticality,
+            "match_phase": self.match_phase,
+            "tournament_stage": self.tournament_stage,
+            "opposition_quality": self.opposition_quality,
         }
 
 
 # Default SPI weight profiles per format
 DEFAULT_SPI_WEIGHTS: dict[str, dict[str, float]] = {
     FormatType.T20I: {
-        "batting": 0.40,
-        "bowling": 0.35,
-        "fielding": 0.10,
-        "impact": 0.15,
+        "run_pressure": 0.30,
+        "wicket_criticality": 0.25,
+        "match_phase": 0.20,
+        "tournament_stage": 0.15,
+        "opposition_quality": 0.10,
     },
     FormatType.ODI: {
-        "batting": 0.38,
-        "bowling": 0.35,
-        "fielding": 0.12,
-        "impact": 0.15,
+        "run_pressure": 0.28,
+        "wicket_criticality": 0.27,
+        "match_phase": 0.18,
+        "tournament_stage": 0.15,
+        "opposition_quality": 0.12,
     },
     FormatType.TEST: {
-        "batting": 0.40,
-        "bowling": 0.40,
-        "fielding": 0.10,
-        "impact": 0.10,
+        "run_pressure": 0.20,
+        "wicket_criticality": 0.30,
+        "match_phase": 0.15,
+        "tournament_stage": 0.20,
+        "opposition_quality": 0.15,
     },
 }
 
@@ -234,6 +256,20 @@ class Settings(BaseSettings):
     )
     log_json: bool = Field(
         default=False, description="Emit logs as JSON (True in production)"
+    )
+
+    # ------------------------------------------------------------------ #
+    # Ingestion                                                            #
+    # ------------------------------------------------------------------ #
+    ingest_sample_mode: bool = Field(
+        default=False,
+        description="Only process first 500 files when True",
+    )
+    ingest_batch_size: int = Field(
+        default=500, description="Files per ingestion batch"
+    )
+    ingest_workers: int = Field(
+        default=4, description="Number of parallel workers for ingestion"
     )
 
     # ------------------------------------------------------------------ #

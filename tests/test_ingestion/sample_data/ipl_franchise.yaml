@@ -1,0 +1,33 @@
+info:
+  balls_per_over: 6
+  dates:
+    - 2022-04-10
+  event:
+    name: Indian Premier League
+    stage: group
+  gender: male
+  match_type: T20
+  overs: 20
+  teams:
+    - Mumbai Indians
+    - Chennai Super Kings
+  venue: Wankhede Stadium
+innings:
+  - team: Mumbai Indians
+    overs:
+      - over: 0
+        deliveries:
+          - batter: RG Sharma
+            bowler: DJ Bravo
+            non_striker: Ishan Kishan
+            runs:
+              batter: 4
+              extras: 0
+              total: 4
+          - batter: RG Sharma
+            bowler: DJ Bravo
+            non_striker: Ishan Kishan
+            runs:
+              batter: 0
+              extras: 0
+              total: 0

@@ -1,0 +1,154 @@
+info:
+  balls_per_over: 6
+  dates:
+    - 2023-11-19
+  event:
+    name: ICC World Cup 2023
+    stage: final
+  gender: male
+  match_type: ODI
+  overs: 50
+  teams:
+    - India
+    - Australia
+  venue: Narendra Modi Stadium
+innings:
+  - team: India
+    overs:
+      - over: 0
+        deliveries:
+          - batter: RG Sharma
+            bowler: Josh Hazlewood
+            non_striker: Shubman Gill
+            runs:
+              batter: 0
+              extras: 0
+              total: 0
+          - batter: RG Sharma
+            bowler: Josh Hazlewood
+            non_striker: Shubman Gill
+            runs:
+              batter: 1
+              extras: 0
+              total: 1
+          - batter: Shubman Gill
+            bowler: Josh Hazlewood
+            non_striker: RG Sharma
+            runs:
+              batter: 4
+              extras: 0
+              total: 4
+          - batter: Shubman Gill
+            bowler: Josh Hazlewood
+            non_striker: RG Sharma
+            runs:
+              batter: 0
+              extras: 0
+              total: 0
+          - batter: Shubman Gill
+            bowler: Josh Hazlewood
+            non_striker: RG Sharma
+            runs:
+              batter: 1
+              extras: 0
+              total: 1
+          - batter: RG Sharma
+            bowler: Josh Hazlewood
+            non_striker: Shubman Gill
+            runs:
+              batter: 0
+              extras: 0
+              total: 0
+      - over: 1
+        deliveries:
+          - batter: RG Sharma
+            bowler: Pat Cummins
+            non_striker: Shubman Gill
+            runs:
+              batter: 6
+              extras: 0
+              total: 6
+          - batter: RG Sharma
+            bowler: Pat Cummins
+            non_striker: Shubman Gill
+            runs:
+              batter: 0
+              extras: 0
+              total: 0
+          - batter: RG Sharma
+            bowler: Pat Cummins
+            non_striker: Shubman Gill
+            runs:
+              batter: 0
+              extras: 0
+              total: 0
+          - batter: RG Sharma
+            bowler: Pat Cummins
+            non_striker: Shubman Gill
+            runs:
+              batter: 4
+              extras: 0
+              total: 4
+          - batter: RG Sharma
+            bowler: Pat Cummins
+            non_striker: Shubman Gill
+            runs:
+              batter: 0
+              extras: 0
+              total: 0
+          - batter: RG Sharma
+            bowler: Pat Cummins
+            non_striker: Shubman Gill
+            runs:
+              batter: 1
+              extras: 0
+              total: 1
+  - team: Australia
+    overs:
+      - over: 0
+        deliveries:
+          - batter: DA Warner
+            bowler: Mohammed Shami
+            non_striker: Travis Head
+            runs:
+              batter: 0
+              extras: 0
+              total: 0
+          - batter: DA Warner
+            bowler: Mohammed Shami
+            non_striker: Travis Head
+            runs:
+              batter: 4
+              extras: 0
+              total: 4
+          - batter: DA Warner
+            bowler: Mohammed Shami
+            non_striker: Travis Head
+            runs:
+              batter: 0
+              extras: 0
+              total: 0
+          - batter: DA Warner
+            bowler: Mohammed Shami
+            non_striker: Travis Head
+            runs:
+              batter: 0
+              extras: 0
+              total: 0
+            wickets:
+              - kind: lbw
+                player_out: DA Warner
+          - batter: SM Smith
+            bowler: Mohammed Shami
+            non_striker: Travis Head
+            runs:
+              batter: 1
+              extras: 0
+              total: 1
+          - batter: Travis Head
+            bowler: Mohammed Shami
+            non_striker: SM Smith
+            runs:
+              batter: 6
+              extras: 0
+              total: 6

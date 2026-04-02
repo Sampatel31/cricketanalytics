@@ -1,20 +1,25 @@
 # SPI weight profiles per cricket format
+# Weights correspond to the five SPI components:
+#   run_pressure, wicket_criticality, match_phase, tournament_stage, opposition_quality
 # Each format's weights must sum to 1.0
 
 [weights.T20I]
-batting  = 0.40
-bowling  = 0.35
-fielding = 0.10
-impact   = 0.15
+run_pressure      = 0.30
+wicket_criticality = 0.25
+match_phase        = 0.20
+tournament_stage   = 0.15
+opposition_quality = 0.10
 
 [weights.ODI]
-batting  = 0.38
-bowling  = 0.35
-fielding = 0.12
-impact   = 0.15
+run_pressure      = 0.28
+wicket_criticality = 0.27
+match_phase        = 0.18
+tournament_stage   = 0.15
+opposition_quality = 0.12
 
 [weights.TEST]
-batting  = 0.40
-bowling  = 0.40
-fielding = 0.10
-impact   = 0.10
+run_pressure      = 0.20
+wicket_criticality = 0.30
+match_phase        = 0.15
+tournament_stage   = 0.20
+opposition_quality = 0.15
