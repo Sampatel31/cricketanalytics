@@ -1,0 +1,15 @@
+{
+  "_comment": "Manual name → player_id overrides. Keys are normalised lowercased names.",
+  "overrides": [
+    {
+      "alias": "ms dhoni",
+      "player_id": "ms-dhoni-ind",
+      "reason": "Common abbreviation for Mahendra Singh Dhoni"
+    },
+    {
+      "alias": "virat",
+      "player_id": "virat-kohli-ind",
+      "reason": "First-name-only reference"
+    }
+  ]
+}
