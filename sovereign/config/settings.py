@@ -311,6 +311,14 @@ class Settings(BaseSettings):
     hdbscan_min_cluster_size: int = Field(
         default=10, description="HDBSCAN minimum cluster size"
     )
+    umap_n_neighbors_cluster: int = Field(default=15, description="UMAP n_neighbors for clustering reduction")
+    umap_min_dist_cluster: float = Field(default=0.1, description="UMAP min_dist for clustering reduction")
+    umap_n_neighbors_viz: int = Field(default=50, description="UMAP n_neighbors for visualization reduction")
+    umap_min_dist_viz: float = Field(default=0.05, description="UMAP min_dist for visualization reduction")
+    hdbscan_min_samples: int | None = Field(default=None, description="HDBSCAN min_samples (None = use min_cluster_size)")
+    bootstrap_runs: int = Field(default=1000, description="Number of bootstrap runs for stability validation")
+    bootstrap_subsample_ratio: float = Field(default=0.8, description="Subsample ratio for bootstrap validation")
+    ari_stability_threshold: float = Field(default=0.85, description="Minimum ARI for stable clustering")
 
     # ------------------------------------------------------------------ #
     # Sub-settings (instantiated lazily)                                   #
