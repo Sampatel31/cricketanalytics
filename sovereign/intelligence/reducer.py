@@ -2,7 +2,7 @@
 
 Reduces 54D player fingerprints to:
 - 10D for HDBSCAN clustering
-- 2D for galaxy-view visualisation
+- 2D for galaxy-view visualization
 """
 
 from __future__ import annotations
@@ -26,7 +26,7 @@ class DimensionalityReducer:
 
     Fits a ``StandardScaler`` and two UMAP models:
     - ``umap_cluster``: 54D → *n_components_cluster* (default 10) for clustering
-    - ``umap_viz``:    54D → *n_components_viz* (default 2) for visualisation
+    - ``umap_viz``:    54D → *n_components_viz* (default 2) for visualization
 
     Fitted models are persisted to ``data/models/`` via joblib so that
     subsequent calls reload rather than refit.
@@ -156,7 +156,8 @@ class DimensionalityReducer:
     def _feature_columns(df: pl.DataFrame) -> list[str]:
         """Return numeric columns excluding metadata."""
         _META = {"player_id", "format_type", "season", "confidence_weight", "innings_count"}
-        return [c for c in df.columns if c not in _META and df[c].dtype in (pl.Float64, pl.Float32, pl.Int32, pl.Int64)]
+        numeric_types = (pl.Float64, pl.Float32, pl.Int32, pl.Int64)
+        return [c for c in df.columns if c not in _META and df[c].dtype in numeric_types]
 
     def _to_numpy(self, features_df: pl.DataFrame) -> np.ndarray:
         """Extract numeric feature columns as a float64 numpy array."""

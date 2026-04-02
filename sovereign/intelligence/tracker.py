@@ -195,5 +195,5 @@ class ArchetypeTracker:
         # Align profile length to centroid
         n = min(len(profile), len(centroid))
         sim = cosine_similarity(profile[:n], centroid[:n])
-        # Normalise from [-1,1] to [0,1]
+        # Normalize from [-1,1] to [0,1]
         return max(0.0, min(1.0, (sim + 1.0) / 2.0))

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""CLI script for generating the 2D Galaxy View visualisation.
+"""CLI script for generating the 2D Galaxy View visualization.
 
 Usage::
 

@@ -29,7 +29,7 @@ class TestDimensionalityReducer:
             assert result.shape == (len(synthetic_features_df), 2)
 
     def test_scaler_normalizes_features(self, synthetic_features_df) -> None:
-        """Scaler normalises features."""
+        """Scaler normalizes features."""
         with tempfile.TemporaryDirectory() as tmpdir:
             reducer = DimensionalityReducer(models_dir=tmpdir)
             reducer.fit(synthetic_features_df)
