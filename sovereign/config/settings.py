@@ -276,7 +276,31 @@ class Settings(BaseSettings):
     # Feature engineering                                                  #
     # ------------------------------------------------------------------ #
     feature_dimensions: int = Field(
-        default=64, description="Dimensionality of player feature vectors"
+        default=54, description="Dimensionality of player feature vectors"
+    )
+    feature_min_innings: int = Field(
+        default=5, description="Minimum innings for stability features"
+    )
+    feature_confidence_innings: int = Field(
+        default=30, description="Innings count for full confidence weight (1.0)"
+    )
+    rolling_window_size: int = Field(
+        default=5, description="Rolling window size for tactical features"
+    )
+    hmm_n_states: int = Field(
+        default=3, description="Number of HMM hidden states for form regime"
+    )
+    feature_min_deliveries_per_tier: int = Field(
+        default=10, description="Minimum deliveries per SPI tier for pressure features"
+    )
+    feature_min_deliveries_per_phase: int = Field(
+        default=5, description="Minimum deliveries per phase for phase features"
+    )
+    feature_n_workers: int = Field(
+        default=4, description="Parallel workers for feature computation"
+    )
+    feature_batch_size: int = Field(
+        default=100, description="Players per batch in feature builder"
     )
     batch_size: int = Field(
         default=256, description="Processing batch size for ingestion"
