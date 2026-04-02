@@ -18,6 +18,9 @@ structlog = "^24.1"
 tomli = { version = "^2.0", python = "<3.11" }
 greenlet = "^3.0"
 psycopg2-binary = "^2.9"
+pyyaml = "^6.0"
+orjson = "^3.9"
+rich = "^13.7"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.2"

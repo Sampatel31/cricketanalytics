@@ -1,0 +1,207 @@
+info:
+  balls_per_over: 6
+  dates:
+    - 2023-06-15
+  event:
+    name: ICC World Cup 2023
+    stage: group
+  gender: male
+  match_type: T20I
+  overs: 20
+  teams:
+    - India
+    - Pakistan
+  venue: Eden Gardens
+innings:
+  - team: India
+    overs:
+      - over: 0
+        deliveries:
+          - batter: V Kohli
+            bowler: Shadab Khan
+            non_striker: RG Sharma
+            runs:
+              batter: 1
+              extras: 0
+              total: 1
+          - batter: RG Sharma
+            bowler: Shadab Khan
+            non_striker: V Kohli
+            runs:
+              batter: 0
+              extras: 0
+              total: 0
+          - batter: RG Sharma
+            bowler: Shadab Khan
+            non_striker: V Kohli
+            runs:
+              batter: 4
+              extras: 0
+              total: 4
+          - batter: RG Sharma
+            bowler: Shadab Khan
+            non_striker: V Kohli
+            runs:
+              batter: 0
+              extras: 0
+              total: 0
+          - batter: V Kohli
+            bowler: Shadab Khan
+            non_striker: RG Sharma
+            runs:
+              batter: 6
+              extras: 0
+              total: 6
+          - batter: V Kohli
+            bowler: Shadab Khan
+            non_striker: RG Sharma
+            runs:
+              batter: 0
+              extras: 0
+              total: 0
+      - over: 1
+        deliveries:
+          - batter: V Kohli
+            bowler: Haris Rauf
+            non_striker: RG Sharma
+            runs:
+              batter: 0
+              extras: 4
+              total: 4
+            extras:
+              wides: 4
+          - batter: V Kohli
+            bowler: Haris Rauf
+            non_striker: RG Sharma
+            runs:
+              batter: 2
+              extras: 0
+              total: 2
+          - batter: V Kohli
+            bowler: Haris Rauf
+            non_striker: RG Sharma
+            runs:
+              batter: 0
+              extras: 0
+              total: 0
+            wickets:
+              - kind: bowled
+                player_out: V Kohli
+          - batter: KL Rahul
+            bowler: Haris Rauf
+            non_striker: RG Sharma
+            runs:
+              batter: 1
+              extras: 0
+              total: 1
+          - batter: RG Sharma
+            bowler: Haris Rauf
+            non_striker: KL Rahul
+            runs:
+              batter: 4
+              extras: 0
+              total: 4
+          - batter: RG Sharma
+            bowler: Haris Rauf
+            non_striker: KL Rahul
+            runs:
+              batter: 6
+              extras: 0
+              total: 6
+          - batter: RG Sharma
+            bowler: Haris Rauf
+            non_striker: KL Rahul
+            runs:
+              batter: 0
+              extras: 0
+              total: 0
+  - team: Pakistan
+    overs:
+      - over: 0
+        deliveries:
+          - batter: Babar Azam
+            bowler: JJ Bumrah
+            non_striker: Mohammad Rizwan
+            runs:
+              batter: 0
+              extras: 0
+              total: 0
+          - batter: Babar Azam
+            bowler: JJ Bumrah
+            non_striker: Mohammad Rizwan
+            runs:
+              batter: 4
+              extras: 0
+              total: 4
+          - batter: Babar Azam
+            bowler: JJ Bumrah
+            non_striker: Mohammad Rizwan
+            runs:
+              batter: 0
+              extras: 0
+              total: 0
+          - batter: Babar Azam
+            bowler: JJ Bumrah
+            non_striker: Mohammad Rizwan
+            runs:
+              batter: 6
+              extras: 0
+              total: 6
+          - batter: Babar Azam
+            bowler: JJ Bumrah
+            non_striker: Mohammad Rizwan
+            runs:
+              batter: 1
+              extras: 0
+              total: 1
+          - batter: Mohammad Rizwan
+            bowler: JJ Bumrah
+            non_striker: Babar Azam
+            runs:
+              batter: 2
+              extras: 0
+              total: 2
+      - over: 1
+        deliveries:
+          - batter: Mohammad Rizwan
+            bowler: Mohammed Shami
+            non_striker: Babar Azam
+            runs:
+              batter: 0
+              extras: 0
+              total: 0
+          - batter: Mohammad Rizwan
+            bowler: Mohammed Shami
+            non_striker: Babar Azam
+            runs:
+              batter: 1
+              extras: 0
+              total: 1
+          - batter: Babar Azam
+            bowler: Mohammed Shami
+            non_striker: Mohammad Rizwan
+            runs:
+              batter: 4
+              extras: 0
+              total: 4
+          - batter: Babar Azam
+            bowler: Mohammed Shami
+            non_striker: Mohammad Rizwan
+            runs:
+              batter: 6
+              extras: 0
+              total: 6
+          - batter: Babar Azam
+            bowler: Mohammed Shami
+            non_striker: Mohammad Rizwan
+            runs:
+              batter: 0
+              extras: 0
+              total: 0
+          - batter: Babar Azam
+            bowler: Mohammed Shami
+            non_striker: Mohammad Rizwan
+            runs:
+              batter: 0
+              extras: 0
+              total: 0

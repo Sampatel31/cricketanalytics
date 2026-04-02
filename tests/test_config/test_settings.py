@@ -89,7 +89,13 @@ class TestSPIWeights:
         """Weights that sum to 1.0 are accepted."""
         from sovereign.config.settings import SPIWeights
 
-        w = SPIWeights(batting=0.4, bowling=0.35, fielding=0.1, impact=0.15)
+        w = SPIWeights(
+            run_pressure=0.30,
+            wicket_criticality=0.25,
+            match_phase=0.20,
+            tournament_stage=0.15,
+            opposition_quality=0.10,
+        )
         assert abs(sum(w.as_dict().values()) - 1.0) < 1e-9
 
     def test_invalid_weights_raise(self) -> None:
@@ -97,15 +103,33 @@ class TestSPIWeights:
         from sovereign.config.settings import SPIWeights
 
         with pytest.raises(ValueError, match="sum to 1.0"):
-            SPIWeights(batting=0.5, bowling=0.5, fielding=0.1, impact=0.1)
+            SPIWeights(
+                run_pressure=0.5,
+                wicket_criticality=0.5,
+                match_phase=0.1,
+                tournament_stage=0.1,
+                opposition_quality=0.1,
+            )
 
     def test_as_dict_keys(self) -> None:
         """as_dict contains the expected keys."""
         from sovereign.config.settings import SPIWeights
 
-        w = SPIWeights(batting=0.4, bowling=0.4, fielding=0.1, impact=0.1)
+        w = SPIWeights(
+            run_pressure=0.30,
+            wicket_criticality=0.25,
+            match_phase=0.20,
+            tournament_stage=0.15,
+            opposition_quality=0.10,
+        )
         keys = set(w.as_dict().keys())
-        assert keys == {"batting", "bowling", "fielding", "impact"}
+        assert keys == {
+            "run_pressure",
+            "wicket_criticality",
+            "match_phase",
+            "tournament_stage",
+            "opposition_quality",
+        }
 
 
 class TestSettings:
