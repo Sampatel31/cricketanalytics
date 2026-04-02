@@ -321,6 +321,63 @@ class Settings(BaseSettings):
     ari_stability_threshold: float = Field(default=0.85, description="Minimum ARI for stable clustering")
 
     # ------------------------------------------------------------------ #
+    # Matching engine                                                       #
+    # ------------------------------------------------------------------ #
+    base_value_t20i: float = Field(
+        default=50.0, description="Base crore value for T20I players"
+    )
+    base_value_odi: float = Field(
+        default=25.0, description="Base crore value for ODI players"
+    )
+    base_value_test: float = Field(
+        default=15.0, description="Base crore value for TEST players"
+    )
+    format_multiplier_t20i: float = Field(
+        default=1.2, description="Format valuation multiplier for T20I"
+    )
+    format_multiplier_odi: float = Field(
+        default=0.9, description="Format valuation multiplier for ODI"
+    )
+    format_multiplier_test: float = Field(
+        default=0.6, description="Format valuation multiplier for TEST"
+    )
+    age_young_threshold: int = Field(
+        default=28, description="Age at or below which a player is 'young'"
+    )
+    age_peak_range: tuple[int, int] = Field(
+        default=(29, 32), description="Inclusive age range for peak players"
+    )
+    age_factor_young: float = Field(
+        default=1.0, description="Valuation multiplier for young players"
+    )
+    age_factor_peak: float = Field(
+        default=0.95, description="Valuation multiplier for peaked players"
+    )
+    age_factor_veteran: float = Field(
+        default=0.85, description="Valuation multiplier for veteran players"
+    )
+    arbitrage_strong_bid: float = Field(
+        default=0.20,
+        description="Arbitrage pct threshold above which to recommend BID",
+    )
+    arbitrage_wait: float = Field(
+        default=0.05,
+        description="Arbitrage pct threshold above which to recommend WAIT",
+    )
+    arbitrage_avoid: float = Field(
+        default=-0.05,
+        description="Arbitrage pct threshold below which to recommend AVOID",
+    )
+    overbid_threshold: float = Field(
+        default=1.2,
+        description="Multiplier above fair value that triggers an overbid alert",
+    )
+    gap_alert_auction_progress_pct: float = Field(
+        default=0.6,
+        description="Auction progress fraction at which gap alerts are triggered",
+    )
+
+    # ------------------------------------------------------------------ #
     # Sub-settings (instantiated lazily)                                   #
     # ------------------------------------------------------------------ #
     _db: DatabaseSettings | None = None
