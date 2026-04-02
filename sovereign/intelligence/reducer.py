@@ -148,6 +148,14 @@ class DimensionalityReducer:
         """True after :meth:`fit` has been called successfully."""
         return self._fitted
 
+    def load_models(self) -> bool:
+        """Load persisted models from the models directory.
+
+        Returns:
+            True if all three model files were loaded successfully.
+        """
+        return self._try_load_models()
+
     # ------------------------------------------------------------------
     # Internal helpers
     # ------------------------------------------------------------------
@@ -156,7 +164,10 @@ class DimensionalityReducer:
     def _feature_columns(df: pl.DataFrame) -> list[str]:
         """Return numeric columns excluding metadata."""
         _META = {"player_id", "format_type", "season", "confidence_weight", "innings_count"}
-        numeric_types = (pl.Float64, pl.Float32, pl.Int32, pl.Int64)
+        numeric_types = (
+            pl.Float64, pl.Float32, pl.Int32, pl.Int64,
+            pl.UInt32, pl.UInt64, pl.Int8, pl.Int16, pl.UInt8, pl.UInt16,
+        )
         return [c for c in df.columns if c not in _META and df[c].dtype in numeric_types]
 
     def _to_numpy(self, features_df: pl.DataFrame) -> np.ndarray:

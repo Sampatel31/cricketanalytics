@@ -86,8 +86,8 @@ def main() -> int:
 
     # Get 2D coordinates
     reducer = DimensionalityReducer(models_dir=args.models_dir)
-    if not reducer._try_load_models():
-        logger.info("Fitting new UMAP models for visualisation")
+    if not reducer.load_models():
+        logger.info("Fitting new UMAP models for visualization")
         reducer.fit(features_df, force=True)
 
     coords_2d = reducer.transform_viz(features_df)
@@ -105,20 +105,33 @@ def main() -> int:
         "#FFEAA7", "#DDA0DD", "#98D8C8", "#F7DC6F",
     ]
 
-    for i, arc in enumerate(archetypes_data):
-        color = colors[i % len(colors)]
+    if archetypes_data:
+        # Render one trace per archetype with distinct colors
+        for i, arc in enumerate(archetypes_data):
+            color = colors[i % len(colors)]
+            fig.add_trace(
+                go.Scatter(
+                    x=coords_2d[:, 0],
+                    y=coords_2d[:, 1],
+                    mode="markers",
+                    name=arc["label"],
+                    marker=dict(size=8, color=color, opacity=0.7),
+                    text=player_ids,
+                    hovertemplate="<b>%{text}</b><br>(%{x:.2f}, %{y:.2f})<extra></extra>",
+                )
+            )
+    else:
         fig.add_trace(
             go.Scatter(
                 x=coords_2d[:, 0],
                 y=coords_2d[:, 1],
                 mode="markers",
-                name=arc["label"],
-                marker=dict(size=8, color=color, opacity=0.7),
+                name="Players",
+                marker=dict(size=8, color=colors[0], opacity=0.7),
                 text=player_ids,
                 hovertemplate="<b>%{text}</b><br>(%{x:.2f}, %{y:.2f})<extra></extra>",
             )
         )
-        break  # Single trace for unlabelled view; expand if cluster labels available
 
     fig.update_layout(
         title=f"Galaxy View — {args.format} {args.season}",
