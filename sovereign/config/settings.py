@@ -378,6 +378,63 @@ class Settings(BaseSettings):
     )
 
     # ------------------------------------------------------------------ #
+    # API                                                                  #
+    # ------------------------------------------------------------------ #
+    api_host: str = Field(default="0.0.0.0", description="API bind host")
+    api_port: int = Field(default=8000, description="API bind port")
+    api_debug: bool = Field(default=False, description="Enable debug mode")
+    api_version: str = Field(default="1.0", description="API version string")
+    api_title: str = Field(
+        default="Sovereign Archetyping - Cricket Auction Intelligence",
+        description="API title shown in OpenAPI docs",
+    )
+
+    # CORS
+    cors_origins: list[str] = Field(
+        default_factory=lambda: ["http://localhost:3000", "http://localhost:8080"],
+        description="CORS allowed origins",
+    )
+    cors_credentials: bool = Field(default=True, description="Allow credentials in CORS")
+    cors_methods: list[str] = Field(
+        default_factory=lambda: ["*"], description="CORS allowed methods"
+    )
+    cors_headers: list[str] = Field(
+        default_factory=lambda: ["*"], description="CORS allowed headers"
+    )
+
+    # Redis (extended)
+    redis_url: str = Field(
+        default="redis://localhost:6379/0", description="Redis connection URL"
+    )
+    redis_session_ttl: int = Field(
+        default=14400, description="Auction session TTL in seconds (4 hours)"
+    )
+
+    # Session management
+    session_timeout_minutes: int = Field(
+        default=240, description="Session timeout in minutes"
+    )
+    max_concurrent_sessions: int = Field(
+        default=50, description="Maximum number of concurrent auction sessions"
+    )
+
+    # WebSocket
+    ws_heartbeat_interval: int = Field(
+        default=30, description="WebSocket heartbeat interval in seconds"
+    )
+    ws_max_connections_per_session: int = Field(
+        default=10, description="Max WebSocket connections per auction session"
+    )
+
+    # Rate limiting
+    rate_limit_requests: int = Field(
+        default=1000, description="Rate limit: requests per window"
+    )
+    rate_limit_window: int = Field(
+        default=3600, description="Rate limit: window size in seconds"
+    )
+
+    # ------------------------------------------------------------------ #
     # Sub-settings (instantiated lazily)                                   #
     # ------------------------------------------------------------------ #
     _db: DatabaseSettings | None = None
