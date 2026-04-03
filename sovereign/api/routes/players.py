@@ -112,7 +112,9 @@ async def search_players(
     for p in _PLAYERS:
         name_lower = p["player_name"].lower()
         if q_lower in name_lower:
-            score = len(q_lower) / max(len(name_lower), 1)
+            # Similarity: ratio of matched characters relative to longer string,
+            # clamped to [0, 1] to avoid scores exceeding 1.
+            score = min(len(q_lower) / max(len(name_lower), 1), 1.0)
             results.append(
                 PlayerSearchResult(
                     player_id=p["player_id"],

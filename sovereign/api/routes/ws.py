@@ -83,7 +83,13 @@ async def _handle_message(
         )
 
     elif msg_type == "bid_update":
-        current_bid = float(msg.get("current_bid", 0))
+        try:
+            current_bid = float(msg.get("current_bid", 0))
+        except (TypeError, ValueError):
+            await manager.send_personal(
+                session_id, client_id, {"type": "connection_error", "message": "Invalid current_bid value."}
+            )
+            return
         max_ceiling = 60.0  # stub
         if current_bid > max_ceiling:
             await manager.broadcast(
@@ -98,7 +104,13 @@ async def _handle_message(
 
     elif msg_type == "pick_confirmed":
         player_id = msg.get("player_id", "")
-        price = float(msg.get("price", 0))
+        try:
+            price = float(msg.get("price", 0))
+        except (TypeError, ValueError):
+            await manager.send_personal(
+                session_id, client_id, {"type": "connection_error", "message": "Invalid price value."}
+            )
+            return
         budget_remaining = (
             state.get("budget_total", 0.0)
             - state.get("budget_spent", 0.0)

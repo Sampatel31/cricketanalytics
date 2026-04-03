@@ -97,12 +97,14 @@ class ConnectionManager:
         for client_id, ws in session_conns.items():
             try:
                 await ws.send_json(message)
-            except Exception:
+            except Exception as exc:
                 dead_clients.append(client_id)
                 logger.warning(
                     "websocket_send_failed",
                     session_id=session_id,
                     client_id=client_id,
+                    exc_type=type(exc).__name__,
+                    exc_msg=str(exc),
                 )
 
         for client_id in dead_clients:
@@ -131,11 +133,13 @@ class ConnectionManager:
 
         try:
             await ws.send_json(message)
-        except Exception:
+        except Exception as exc:
             logger.warning(
                 "websocket_personal_send_failed",
                 session_id=session_id,
                 client_id=client_id,
+                exc_type=type(exc).__name__,
+                exc_msg=str(exc),
             )
             await self.disconnect(session_id, client_id)
 
