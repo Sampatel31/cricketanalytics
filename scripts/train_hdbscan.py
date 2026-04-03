@@ -127,7 +127,8 @@ def _save_to_db(
     settings = get_settings()
     engine = sa.create_engine(settings.database_url)
     centroids_json = json.dumps(centroids.tolist())
-    labels_bytes = pickle.dumps(labels)
+    # Store labels as JSON-encoded bytes (not pickle) to avoid unsafe deserialisation.
+    labels_bytes = json.dumps(labels.tolist()).encode("utf-8")
     with engine.begin() as conn:
         conn.execute(
             sa.text(
@@ -300,7 +301,12 @@ def main(argv: list[str] | None = None) -> int:
             _save_to_db(args.format_type, labels, centroids)
             log.info("Cluster results stored in DB for format %s", args.format_type)
         except Exception as exc:
-            log.warning("Could not save cluster results to DB: %s", exc)
+            log.warning(
+                "Could not save cluster results to DB (format=%s): %s",
+                args.format_type,
+                exc,
+                exc_info=True,
+            )
 
     # ------------------------------------------------------------------ #
     # Summary output                                                       #

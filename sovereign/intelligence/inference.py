@@ -191,8 +191,10 @@ class ArchetypeInferenceEngine:
                 )
 
             reducer = joblib.load(io.BytesIO(row_umap[0]))
-            labels = pickle.loads(row_hdbscan[0])  # noqa: S301
+            # Labels are stored as a JSON-encoded list of ints (not pickle)
+            # to avoid unsafe deserialisation of arbitrary bytes.
             import json as _json
+            labels = np.array(_json.loads(row_hdbscan[0].decode("utf-8")))
             centroids = np.array(_json.loads(row_hdbscan[1]))
 
             logger.info("Loaded inference models from DB for format %s", format_type)

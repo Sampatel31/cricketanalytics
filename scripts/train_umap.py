@@ -217,7 +217,12 @@ def main(argv: list[str] | None = None) -> int:
             _save_to_db(args.format_type, buf.getvalue())
             log.info("UMAP model stored in DB for format %s", args.format_type)
         except Exception as exc:
-            log.warning("Could not save UMAP model to DB: %s", exc)
+            log.warning(
+                "Could not save UMAP model to DB (format=%s): %s",
+                args.format_type,
+                exc,
+                exc_info=True,
+            )
 
     print(
         f"\n✓ UMAP training complete in {elapsed:.1f}s\n"

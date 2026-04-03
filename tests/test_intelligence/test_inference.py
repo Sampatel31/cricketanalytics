@@ -152,7 +152,7 @@ class TestArchetypeInferenceEngine:
             reducer._UMAP_VIZ_PATH = "umap_2d_T20I.joblib"
             reducer.fit(features_df, n_components_cluster=5, n_components_viz=2, force=True)
             # Do NOT write cluster_labels_T20I.pkl
-            with pytest.raises(FileNotFoundError, match="cluster_labels"):
+            with pytest.raises(FileNotFoundError, match="cluster_labels_T20I.pkl"):
                 ArchetypeInferenceEngine.from_files(tmpdir, format_type="T20I")
 
     def test_from_files_raises_for_missing_umap(self) -> None:
