@@ -42,12 +42,12 @@ export default function GalaxyView(): React.ReactElement {
     const maxY = Math.max(...ys)
     const rangeX = maxX - minX || 1
     const rangeY = maxY - minY || 1
-    const pad = 40
+    const CANVAS_PADDING = 40
 
     return players.map((p) => ({
       ...p,
-      cx: pad + (((p.umap_x ?? 0) - minX) / rangeX) * (dims.w - pad * 2),
-      cy: pad + (((p.umap_y ?? 0) - minY) / rangeY) * (dims.h - pad * 2),
+      cx: CANVAS_PADDING + (((p.umap_x ?? 0) - minX) / rangeX) * (dims.w - CANVAS_PADDING * 2),
+      cy: CANVAS_PADDING + (((p.umap_y ?? 0) - minY) / rangeY) * (dims.h - CANVAS_PADDING * 2),
       r: 4 + Math.min(8, (p.market_price ?? 1) * 0.5),
     }))
   }, [players, dims])
@@ -88,7 +88,8 @@ export default function GalaxyView(): React.ReactElement {
     const my = e.clientY - rect.top
 
     let nearest: (typeof playersWithPos)[0] | null = null
-    let minDist = 16
+    const HOVER_DETECTION_RADIUS = 16
+    let minDist = HOVER_DETECTION_RADIUS
 
     for (const p of playersWithPos) {
       const d = Math.hypot(p.cx - mx, p.cy - my)

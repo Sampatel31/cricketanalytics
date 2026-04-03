@@ -1,4 +1,4 @@
-import { WS_URL, WS_HEARTBEAT_INTERVAL, WS_MAX_RECONNECT_ATTEMPTS } from '../config/constants'
+import { WS_URL, WS_HEARTBEAT_INTERVAL, WS_MAX_RECONNECT_ATTEMPTS, WS_MAX_RECONNECT_DELAY_MS } from '../config/constants'
 import type { WSMessage } from '../types/api'
 
 type EventHandler = (data: Record<string, unknown>) => void
@@ -100,7 +100,7 @@ export class WebSocketClient {
       try {
         h(data)
       } catch (err) {
-        console.error(`Handler error for event "${event}":`, err)
+        console.error('Handler error for WebSocket event:', err)
       }
     })
   }
@@ -123,7 +123,7 @@ export class WebSocketClient {
       this.emit('max_reconnect_exceeded', {})
       return
     }
-    const delay = Math.min(1000 * Math.pow(2, this.reconnectAttempts), 30_000)
+    const delay = Math.min(1000 * Math.pow(2, this.reconnectAttempts), WS_MAX_RECONNECT_DELAY_MS)
     this.reconnectAttempts++
     this.emit('reconnecting', { attempt: this.reconnectAttempts, delay })
     this.reconnectTimer = setTimeout(() => {
