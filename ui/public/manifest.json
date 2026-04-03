@@ -1,0 +1,16 @@
+{
+  "name": "Sovereign War Room",
+  "short_name": "War Room",
+  "description": "Real-time cricket auction intelligence",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0f",
+  "theme_color": "#7f77dd",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
