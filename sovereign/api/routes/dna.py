@@ -151,7 +151,6 @@ async def score_players(
         raise InvalidDNAError(dna_id)
 
     dna = FranchiseDNA(**dna_dict)
-    scorer = HomologyScorer()
 
     rng = np.random.default_rng(0)
     n = len(body.player_ids)
@@ -170,7 +169,7 @@ async def score_players(
     }
     archetypes_df = pl.DataFrame(archetypes_data)
 
-    scored = scorer.compute_scores(
+    scored = HomologyScorer().compute_scores(
         dna=dna,
         player_ids=body.player_ids,
         features_df=features_df,

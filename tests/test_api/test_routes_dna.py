@@ -5,14 +5,7 @@ from __future__ import annotations
 import pytest
 from fastapi.testclient import TestClient
 
-from sovereign.api.dependencies import _dna_store, _session_store
 from sovereign.api.main import app
-
-
-@pytest.fixture(autouse=True)
-def clear_stores() -> None:
-    _dna_store.clear()
-    _session_store.clear()
 
 
 @pytest.fixture
